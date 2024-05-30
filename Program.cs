@@ -5,10 +5,7 @@ List<Product> products = new List<Product>();
 ProductHelper productHelper = new ProductHelper();
 while (true)
 {
-    Console.ForegroundColor = ConsoleColor.DarkYellow;
-    Console.WriteLine("Enter a product by follow the steps. Search for product in list by entering (s). Quit by enter (q). ");
-    Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("Enter a productname: ");
+    Console.WriteLine("Enter a productname/search for product (s)/quit (q). ");
     var name = Console.ReadLine().Trim().ToLower();
     if (name == "q")
     {
@@ -16,7 +13,7 @@ while (true)
     }
     else if (name == "s")
     {
-        Console.WriteLine("Enter a search value: ");
+        Console.WriteLine("Enter a searchvalue: ");
         var searchValue = Console.ReadLine();
         productHelper.DisplayProducts(products, searchValue);
     }
@@ -37,6 +34,9 @@ while (true)
         else
         {
             products.Add(product);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Produkten är tillagd");
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
 

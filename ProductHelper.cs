@@ -20,15 +20,16 @@ namespace Week22
             return product;
         }
 
-        public void DisplayProducts(List<Product> products, string searchedValue= "")
+        public void DisplayProducts(List<Product> products, string searchedValue= null)
         {
             var sortedProducts = products.OrderBy(p => p.Price).ToList();
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Name".PadRight(10) + "Category".PadRight(10) + "Price");
             Console.ForegroundColor = ConsoleColor.White;
             foreach (Product product in sortedProducts) 
             {
-                if (product.ProductName.Contains(searchedValue) || product.Category.Contains(searchedValue))
+                if (!string.IsNullOrEmpty(searchedValue) && product.ProductName.Contains(searchedValue) 
+                    || (!string.IsNullOrEmpty(searchedValue) && product.Category.Contains(searchedValue)))
                 { 
                     Console.ForegroundColor = ConsoleColor.Yellow;
                 }
